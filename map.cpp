@@ -110,22 +110,6 @@ void AdjacencyList::Test() {
     cout << "ALL IS OK." << endl;
 }
 
-void AdjacencyList::ShowGraph(GraphadjList* G) {
-    for (int i = 0; i < G->numVertexes; i++)
-    {
-        cout << "顶点" << i << ": " << G->adjList[i].data << "--firstedge--";
-        edgeNode* p = new edgeNode;
-        p = G->adjList[i].firstedge;
-        while (p)
-        {
-            cout << p->adjvex << "--Weight: " << p->weight << "--Next--";
-            p = p->next;
-        }
-        cout << "--NULL" << endl;
-    }
-
-}
-
 //初始化地图基本数据
 void AdjacencyList::InitMap(GraphadjList* G) {
     //输入顶点数和边数
@@ -224,7 +208,7 @@ int main() {
         cout << "请按照图片选择你想去的地方，输入起始点和目的地的序号，以空格间隔。" << endl;
         cout << "标准格式 ：起点 终点 关闭图片，回车" << endl;
         cout << "若输入已完成，请关闭图片。按下回车键，即可显示路径。" << endl;
-        system("test0.png");
+        system("image1.png");
         cin >> originPos >> endPos;
         adjacencyList.ShowShortestResult(originPos, endPos);
     }

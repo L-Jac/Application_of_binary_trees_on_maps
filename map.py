@@ -48,8 +48,10 @@ class GraphadjList:
 
 def ShowShortestResult(originPos, endPos):
     temp = ShortestPathMatrix[originPos][endPos]
-    words = [f"地点{M_mapName[originPos]}到地点{M_mapName[endPos]}最短距离为{ShortestPathMatrix[originPos][endPos]}\n",
-             f"具体路径为：\n{M_mapName[originPos]}——>"]
+    words = [
+        f"地点{M_mapName[originPos]}到地点{M_mapName[endPos]}"
+        f"最短距离为{ShortestPathMatrix[originPos][endPos]:03d}\n",
+        f"具体路径为：\n{M_mapName[originPos]}——>"]
     while temp != endPos:
         words.append(f"{M_mapName[temp]}——>")
         temp = ShortestPathMatrix[temp][endPos]
@@ -149,16 +151,6 @@ def InitMap(G):
     D_distance[11][12] = 160
 
     D_distance[12][13] = 150
-
-
-def ShowGraph(G):
-    for i in range(G.numVertexes):
-        print(f"顶点{i}: {G.adjList[i].data}--firstedge--", end="")
-        p = G.adjList[i].firstedge
-        while p:
-            print(f"{p.adjvex}--Weight: {p.weight}--Next--", end="")
-            p = p.next
-        print("--NULL")
 
 
 def ShortestPath_Floyd(G, P, D):
